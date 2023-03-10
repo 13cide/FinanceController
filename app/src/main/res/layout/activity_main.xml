@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:animateLayoutChanges="true">
+
+    <FrameLayout
+        android:animateLayoutChanges="true"
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="70dp"/>
+
+
+    <LinearLayout
+        android:animateLayoutChanges="true"
+        android:id="@+id/navigation_bar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:background="#FFF1F1F1"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:animateLayoutChanges="true"
+            android:id="@+id/transactions"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:src="@drawable/transactions_open" />
+
+        <ImageView
+            android:animateLayoutChanges="true"
+            android:id="@+id/statistic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:src="@drawable/statistic_close" />
+
+    </LinearLayout>
+</RelativeLayout>
