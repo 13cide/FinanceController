@@ -5,12 +5,12 @@ import java.util.ArrayList;
 public class Account {
     private int accountID;
     private Currency currency;
-    private double sum;
+    private int sum;
     private ArrayList<Transaction> spends;
     private ArrayList<Transaction> incomes;
 
 
-    public Account(int accountID, Currency currency, double sum, ArrayList<Transaction> spends, ArrayList<Transaction> incomes) {
+    public Account(int accountID, Currency currency, int sum, ArrayList<Transaction> spends, ArrayList<Transaction> incomes) {
         this.accountID = accountID;
         this.currency = currency;
         this.sum = sum;
@@ -32,14 +32,6 @@ public class Account {
 
     public void setCurrency(Currency currency) {
         this.currency = currency;
-    }
-
-    public double getSum() {
-        return sum;
-    }
-
-    public void setSum(double sum) {
-        this.sum = sum;
     }
 
     public ArrayList<Transaction> getSpends() {

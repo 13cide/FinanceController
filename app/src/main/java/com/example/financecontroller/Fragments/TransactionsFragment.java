@@ -58,10 +58,6 @@ public class TransactionsFragment extends Fragment {
             binding.transactions.getAdapter().notifyDataSetChanged();
         });
 
-        binding.addButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getContext(), AddTransactionActivity.class);
-            startActivity(intent);
-        });
         return binding.getRoot();
     }
 
@@ -69,10 +65,12 @@ public class TransactionsFragment extends Fragment {
     public void onResume() {
         super.onResume();
         spendList = MainActivity.db.wallet.getAccounts()[0].getSpends();
-        incomeList= MainActivity.db.wallet.getAccounts()[0].getIncomes();
+        incomeList = MainActivity.db.wallet.getAccounts()[0].getIncomes();
 
         list.clear();
         list.addAll(spendList);
         binding.transactions.getAdapter().notifyDataSetChanged();
+
+        binding.sum.setText(MainActivity.db.wallet.getSum() + "" + MainActivity.db.account.getCurrency().getSymbol());
     }
 }

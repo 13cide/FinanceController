@@ -3,7 +3,7 @@ package com.example.financecontroller.DataClasses;
 public class Currency {
     private String name;
     private double value;
-    private String symbol;
+    private final String symbol;
 
     public Currency(String name, double value, String symbol) {
         this.name = name;

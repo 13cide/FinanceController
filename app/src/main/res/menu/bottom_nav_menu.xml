@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/history"
+        android:icon="@drawable/history_icon"
+        android:title="история"/>
+
+    <item
+        android:id="@+id/statistic"
+        android:icon="@drawable/statistic_icon"
+        android:title="статистика"/>
+
+    <item
+        android:id="@+id/placeholder"
+        android:title=""/>
+
+    <item
+        android:id="@+id/category"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="категории"/>
+
+    <item
+        android:id="@+id/idk"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="ну хз"/>
+
+</menu>

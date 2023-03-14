@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.financecontroller.DataClasses.Localdb;
@@ -22,28 +23,34 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        int s = getResources().getColor(R.color.spend, null);
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         swapFragment(new TransactionsFragment());
 
-        binding.transactions.setOnClickListener(view -> {
-            if (chosenFragment != 1) {
-                binding.transactions.setImageResource(R.drawable.transactions_open);
-                binding.statistic.setImageResource(R.drawable.statistic_close);
-                swapFragment(new TransactionsFragment());
-                chosenFragment = 1;
-            }
-        });
+//        binding.transactions.setOnClickListener(view -> {
+//            if (chosenFragment != 1) {
+//                binding.transactions.setImageResource(R.drawable.transactions_open);
+//                binding.statistic.setImageResource(R.drawable.statistic_close);
+//                swapFragment(new TransactionsFragment());
+//                chosenFragment = 1;
+//            }
+//        });
+//
+//        binding.statistic.setOnClickListener(view -> {
+//            if (chosenFragment != 2) {
+//                binding.transactions.setImageResource(R.drawable.transactions_close);
+//                binding.statistic.setImageResource(R.drawable.statistic_open);
+//                swapFragment(new StatisticFragment());
+//                chosenFragment = 2;
+//            }
+//        });
 
-        binding.statistic.setOnClickListener(view -> {
-            if (chosenFragment != 2) {
-                binding.transactions.setImageResource(R.drawable.transactions_close);
-                binding.statistic.setImageResource(R.drawable.statistic_open);
-                swapFragment(new StatisticFragment());
-                chosenFragment = 2;
-            }
+        binding.addButton.setOnClickListener(view -> {
+            Intent intent = new Intent(this, AddTransactionActivity.class);
+            startActivity(intent);
         });
     }
 
@@ -52,5 +59,6 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.main_content, fragment);
         transaction.commit();
     }
+
 
 }

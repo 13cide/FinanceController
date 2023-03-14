@@ -8,6 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="not_income">#64DD17</color>
+    <color name="spend">#64DD17</color>
     <color name="income">#D50000</color>
 </resources>

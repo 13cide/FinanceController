@@ -29,7 +29,7 @@ public class AddTransactionActivity extends AppCompatActivity {
 
         binding.addButton.setOnClickListener(view -> {
             if (!binding.amount.getText().toString().isEmpty()) {
-                double amount = Double.parseDouble(binding.amount.getText().toString());
+                int amount = Integer.parseInt(binding.amount.getText().toString());
 
                 Localdb db = MainActivity.db;
 
@@ -38,6 +38,7 @@ public class AddTransactionActivity extends AppCompatActivity {
                             db.music, amount, 1, "", "₽"));
                 else db.account.getIncomes().add(new Transaction(db.nextTransactionID(),
                         db.salary, amount, 1, "", "₽"));
+                db.wallet.setSum(db.wallet.getSum() + amount * (binding.switcher.isChecked() ? -1 : 1));
                 MainActivity.db = db;
                 finish();
             }

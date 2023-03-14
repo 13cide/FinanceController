@@ -1,5 +1,6 @@
 package com.example.financecontroller;
 
+import android.content.res.ColorStateList;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +34,7 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        final Transaction transaction = list.get(position);
+        final Transaction transaction = list.get(list.size()-position-1);
 
 
         Calendar calendar = Calendar.getInstance();
@@ -47,8 +48,11 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
         holder.icon.setImageResource(transaction.getCategory().getIconID());
         holder.icon.setBackgroundResource(transaction.getCategory().getColorID());
         holder.currency.setText(transaction.getCurrency_symbol());
-//        holder.currency.setTextColor(transaction.getCategory().isIncome() ? R.color.income : R.color.not_income);
-//        holder.value.setTextColor(transaction.getCategory().isIncome() ? R.color.income : R.color.not_income);
+        int incomeColor = -2818048;
+        int spendColor = -10167017;
+        holder.value.setTextColor(transaction.getCategory().isIncome() ? spendColor : incomeColor);
+        holder.currency.setTextColor(transaction.getCategory().isIncome() ? spendColor : incomeColor);
+
     }
 
     @Override

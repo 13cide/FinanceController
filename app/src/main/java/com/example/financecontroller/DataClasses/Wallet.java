@@ -3,10 +3,10 @@ package com.example.financecontroller.DataClasses;
 public class Wallet {
 
     private int[] userID;
-    private double sum;
+    private int sum;
     private Account[] accounts;
 
-    public Wallet(int[] userID, double sum, Account[] accounts) {
+    public Wallet(int[] userID, int sum, Account[] accounts) {
         this.userID = userID;
         this.sum = sum;
         this.accounts = accounts;
@@ -20,10 +20,10 @@ public class Wallet {
         this.userID = userID;
     }
 
-    public double getSum() {
+    public int getSum() {
         return sum;
     }
-    public void setSum(double sum) {
+    public void setSum(int sum) {
         this.sum = sum;
     }
 
