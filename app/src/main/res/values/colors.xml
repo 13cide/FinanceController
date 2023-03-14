@@ -10,4 +10,13 @@
 
     <color name="spend">#64DD17</color>
     <color name="income">#D50000</color>
+
+    <color name="history">#F57C00</color>
+    <color name="statistic">#00ACC1</color>
+    <color name="categories">#43A047</color>
+
+    <color name="history_20">#33F57C00</color>
+    <color name="statistic_20">#3300ACC1</color>
+    <color name="categories_20">#3343A047</color>
+
 </resources>
