@@ -25,7 +25,7 @@ public class Localdb {
 
 
     public Account account = new Account(1, ruble, 0,
-            new ArrayList<Transaction>(Arrays.asList(transaction, transaction, transaction, transaction, transaction, transaction, transaction, transaction, transaction, transaction, transaction, transaction, transaction, transaction, transaction, transaction)),
+            new ArrayList<Transaction>(),
             new ArrayList<Transaction>());
 
     public Wallet wallet = new Wallet(new int[]{1}, 0, new Account[]{account});

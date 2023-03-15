@@ -58,6 +58,12 @@ public class TransactionsFragment extends Fragment {
             binding.transactions.getAdapter().notifyDataSetChanged();
         });
 
+        binding.addButton.setOnClickListener(view -> {
+            Intent intent = new Intent(getContext(), AddTransactionActivity.class);
+            startActivity(intent);
+        });
+
+
         return binding.getRoot();
     }
 

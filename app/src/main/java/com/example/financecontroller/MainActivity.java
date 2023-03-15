@@ -51,11 +51,6 @@ public class MainActivity extends AppCompatActivity {
                 binding.statisticIcon.setImageResource(R.drawable.statistic_icon);
                 binding.statisticText.setVisibility(View.GONE);
 
-//                ScaleAnimation scaleAnimation = new ScaleAnimation(0.8f, 1.0f, 1.0f, 1.0f, Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF, 0.0f);
-//                scaleAnimation.setDuration(200);
-//                scaleAnimation.setFillAfter(true);
-//                binding.historyLayout.startAnimation(scaleAnimation);
-
                 swapFragment(new TransactionsFragment());
                 chosenFragment = 1;
             }

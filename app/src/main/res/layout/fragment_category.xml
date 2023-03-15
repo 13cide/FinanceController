@@ -3,11 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.CategoryFragment">
+    tools:context=".Fragments.CategoryFragment"
+    android:background="@color/categories_20">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="categories" />
+        android:text="Категории в разработке"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
 
 </FrameLayout>

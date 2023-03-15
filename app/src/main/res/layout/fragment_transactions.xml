@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity"
-    android:animateLayoutChanges="true">
+    android:animateLayoutChanges="true"
+    android:background="@color/history_20">
 
     <TextView
         android:id="@+id/sum"
@@ -37,7 +38,9 @@
             android:layout_weight="1"
             android:text="Траты"
             android:textSize="20sp"
-            android:animateLayoutChanges="true"/>
+            android:animateLayoutChanges="true"
+            android:backgroundTint="@color/history"
+            android:textColor="@color/black"/>
 
         <Button
             android:id="@+id/income_button"
@@ -48,7 +51,9 @@
             android:layout_weight="1"
             android:text="Доход"
             android:textSize="20sp"
-            android:animateLayoutChanges="true"/>
+            android:backgroundTint="@color/history"
+            android:animateLayoutChanges="true"
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 
@@ -71,7 +76,7 @@
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
         android:src="@android:drawable/ic_input_add"
-        app:backgroundTint="@color/design_default_color_primary" />
+        app:backgroundTint="@color/history" />
 
 
 </RelativeLayout>
