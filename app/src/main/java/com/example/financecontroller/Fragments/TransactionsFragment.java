@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.financecontroller.AddTransactionActivity;
 import com.example.financecontroller.DataClasses.Localdb;
@@ -18,9 +19,11 @@ import com.example.financecontroller.R;
 import com.example.financecontroller.TransactionAdapter;
 import com.example.financecontroller.databinding.ActivityMainBinding;
 import com.example.financecontroller.databinding.FragmentTransactionsBinding;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class TransactionsFragment extends Fragment {
@@ -46,23 +49,28 @@ public class TransactionsFragment extends Fragment {
         incomeList= MainActivity.db.wallet.getAccounts()[0].getIncomes();
 
         binding.transactions.setAdapter(new TransactionAdapter(list));
-        binding.spendButton.setOnClickListener(view -> {
+
+
+        binding.tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
             list.clear();
-            list.addAll(spendList);
+            list.addAll(tab.getPosition() == 0 ? spendList : incomeList);
             binding.transactions.getAdapter().notifyDataSetChanged();
-        });
 
-        binding.incomeButton.setOnClickListener(view -> {
-            list.clear();
-            list.addAll(incomeList);
-            binding.transactions.getAdapter().notifyDataSetChanged();
-        });
+            }
 
-        binding.addButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getContext(), AddTransactionActivity.class);
-            startActivity(intent);
-        });
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
 
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                if(Objects.requireNonNull(binding.transactions.getAdapter()).getItemCount() > 0)
+                    binding.transactions.smoothScrollToPosition(0);
+            }
+        });
 
         return binding.getRoot();
     }
@@ -76,6 +84,8 @@ public class TransactionsFragment extends Fragment {
         list.clear();
         list.addAll(spendList);
         binding.transactions.getAdapter().notifyDataSetChanged();
+
+        binding.tabs.selectTab(binding.tabs.getTabAt(0));
 
         binding.sum.setText(MainActivity.db.wallet.getSum() + "" + MainActivity.db.account.getCurrency().getSymbol());
     }

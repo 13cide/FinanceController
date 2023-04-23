@@ -1,15 +1,14 @@
 package com.example.financecontroller;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.ScaleAnimation;
+import android.view.MenuItem;
 
 import com.example.financecontroller.DataClasses.Localdb;
 import com.example.financecontroller.Fragments.CategoryFragment;
@@ -34,70 +33,46 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        binding.addButton.setOnClickListener(view -> {
+            Intent intent = new Intent(this, AddTransactionActivity.class);
+            startActivity(intent);
+        });
+
         swapFragment(new TransactionsFragment());
 
-        binding.historyLayout.setOnClickListener(view -> {
-            if (chosenFragment != 1) {
+        binding.bottomAppBar.setNavigationOnClickListener(view -> {
 
-                binding.historyLayout.setBackgroundResource(R.drawable.round_back_history);
-                binding.historyIcon.setImageResource(R.drawable.history_selected_icon);
-                binding.historyText.setVisibility(View.VISIBLE);
-
-                binding.categoryLayout.setBackgroundResource(R.drawable.transparent_background);
-                binding.categoryIcon.setImageResource(R.drawable.categories_icon);
-                binding.categoryText.setVisibility(View.GONE);
-
-                binding.statisticLayout.setBackgroundResource(R.drawable.transparent_background);
-                binding.statisticIcon.setImageResource(R.drawable.statistic_icon);
-                binding.statisticText.setVisibility(View.GONE);
-
-                swapFragment(new TransactionsFragment());
-                chosenFragment = 1;
-            }
         });
 
-        binding.categoryLayout.setOnClickListener(view -> {
-            if (chosenFragment != 2) {
+        binding.bottomAppBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
 
-                binding.historyLayout.setBackgroundResource(R.drawable.transparent_background);
-                binding.historyIcon.setImageResource(R.drawable.history_icon);
-                binding.historyText.setVisibility(View.GONE);
+                switch (item.getItemId()) {
+                    case R.id.history:
+                        if (chosenFragment != 1) {
+                            swapFragment(new TransactionsFragment());
+                            chosenFragment = 1;
+                        }
+                        return true;
 
-                binding.categoryLayout.setBackgroundResource(R.drawable.round_back_category);
-                binding.categoryIcon.setImageResource(R.drawable.categories_selected_icon);
-                binding.categoryText.setVisibility(View.VISIBLE);
+                    case R.id.statistic:
+                        if (chosenFragment != 2) {
+                            swapFragment(new StatisticFragment());
+                            chosenFragment = 2;
+                        }
+                        return true;
 
-                binding.statisticLayout.setBackgroundResource(R.drawable.transparent_background);
-                binding.statisticIcon.setImageResource(R.drawable.statistic_icon);
-                binding.statisticText.setVisibility(View.GONE);
-
-
-                swapFragment(new CategoryFragment());
-                chosenFragment = 2;
+                    case R.id.category:
+                        if (chosenFragment != 3) {
+                            swapFragment(new CategoryFragment());
+                            chosenFragment = 3;
+                        }
+                        return true;
+                }
+                return false;
             }
         });
-
-        binding.statisticLayout.setOnClickListener(view -> {
-            if (chosenFragment != 3) {
-
-                binding.historyLayout.setBackgroundResource(R.drawable.transparent_background);
-                binding.historyIcon.setImageResource(R.drawable.history_icon);
-                binding.historyText.setVisibility(View.GONE);
-
-                binding.categoryLayout.setBackgroundResource(R.drawable.transparent_background);
-                binding.categoryIcon.setImageResource(R.drawable.categories_icon);
-                binding.categoryText.setVisibility(View.GONE);
-
-                binding.statisticLayout.setBackgroundResource(R.drawable.round_back_statistic);
-                binding.statisticIcon.setImageResource(R.drawable.statistic_selected_icon);
-                binding.statisticText.setVisibility(View.VISIBLE);
-
-
-                swapFragment(new StatisticFragment());
-                chosenFragment = 3;
-            }
-        });
-
 
     }
 
@@ -108,6 +83,5 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.main_content, fragment);
         transaction.commit();
     }
-
 
 }
