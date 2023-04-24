@@ -1,6 +1,10 @@
 package com.example.financecontroller.DataClasses;
 
+import android.graphics.Color;
+
 import com.example.financecontroller.R;
+
+import org.w3c.dom.Attr;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,8 +21,8 @@ public class Localdb {
     public Currency belarus_ruble = new Currency("BYN", 26.64, "Br");
 
 
-    public final Category music = new Category(1, "music", android.R.color.holo_red_dark, R.drawable.icon_guitars, false);
-    public final Category salary = new Category(2, "salary", android.R.color.holo_green_dark, R.drawable.icon_salary, true);
+    public final Category music = new Category(1, "music", android.R.color.transparent, R.drawable.icon_guitars, false);
+    public final Category salary = new Category(2, "salary", android.R.color.transparent, R.drawable.icon_salary, true);
     public final Transaction transaction = new Transaction(current_id++, salary, 500, 1, "sosi", "₽");
     public final Transaction transaction2 = new Transaction(current_id++, music, 500, 1, "sosi", "₽");
     public final Transaction transaction3 = new Transaction(current_id++, music, 400, 1, "sosi", "₽");

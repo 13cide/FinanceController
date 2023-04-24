@@ -12,6 +12,7 @@ import com.example.financecontroller.DataClasses.Localdb;
 import com.example.financecontroller.DataClasses.Transaction;
 import com.example.financecontroller.Fragments.TransactionsFragment;
 import com.example.financecontroller.databinding.ActivityAddTransactionBinding;
+import com.google.android.material.color.DynamicColors;
 
 public class AddTransactionActivity extends AppCompatActivity {
 
@@ -20,6 +21,7 @@ public class AddTransactionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DynamicColors.applyToActivityIfAvailable(this);
         binding = ActivityAddTransactionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 

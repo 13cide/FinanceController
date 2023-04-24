@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/history"
-        android:icon="@drawable/history_icon"
+        android:icon="@drawable/history_icon_selected"
         android:title="история"
         app:showAsAction="ifRoom"/>
 

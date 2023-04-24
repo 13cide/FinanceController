@@ -22,7 +22,6 @@
             android:layout_height="85dp"
             android:inputType="numberSigned"
             android:textAlignment="center"
-            android:textColor="@color/black"
             android:textSize="40sp"
             tools:text="3000" />
 
@@ -30,7 +29,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="₽"
-            android:textColor="@color/black"
             android:textSize="60sp" />
 
     </LinearLayout>
@@ -42,7 +40,6 @@
         android:layout_below="@+id/input_value"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="160dp"
-        android:backgroundTint="#F57C00"
         android:scaleX="2"
         android:scaleY="2"
         android:text="доход"
@@ -50,7 +47,7 @@
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/add_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -58,7 +55,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="200dp"
         android:text="добавить"
-        android:textSize="30sp"
-        android:backgroundTint="@color/history"/>
+        android:textSize="30sp"/>
 
 </RelativeLayout>

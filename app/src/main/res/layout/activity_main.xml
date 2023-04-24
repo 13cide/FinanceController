@@ -9,7 +9,7 @@
     <FrameLayout
         android:id="@+id/main_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 
     <com.google.android.material.bottomappbar.BottomAppBar
@@ -17,157 +17,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:animateLayoutChanges="true"
         app:hideOnScroll="true"
         app:menu="@menu/bottom_app_bar"
-        app:navigationIcon="@drawable/baseline_menu_icon"
-        android:animateLayoutChanges="true"/>
+        app:navigationIcon="@drawable/baseline_menu_icon" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_anchor="@id/bottomAppBar"
-        app:srcCompat="@android:drawable/ic_input_add"/>
+        app:srcCompat="@android:drawable/ic_input_add" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-
-    <!--    <LinearLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="80dp"-->
-    <!--        android:layout_alignParentBottom="true"-->
-    <!--        android:background="@color/white"-->
-    <!--        android:orientation="horizontal">-->
-
-    <!--        <LinearLayout-->
-    <!--            android:id="@+id/navBar"-->
-    <!--            android:layout_width="0dp"-->
-    <!--            android:layout_height="match_parent"-->
-    <!--            android:layout_weight="3"-->
-    <!--            android:animateLayoutChanges="true"-->
-    <!--            android:gravity="center"-->
-    <!--            android:orientation="horizontal"-->
-    <!--            android:paddingVertical="10dp"-->
-    <!--            android:paddingHorizontal="10dp">-->
-
-    <!--            <LinearLayout-->
-    <!--                android:id="@+id/history_layout"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="match_parent"-->
-    <!--                android:layout_weight="1"-->
-    <!--                android:animateLayoutChanges="true"-->
-    <!--                android:background="@drawable/round_back_history"-->
-    <!--                android:gravity="center"-->
-    <!--                android:orientation="horizontal"-->
-    <!--                android:paddingHorizontal="5dp">-->
-
-    <!--                <ImageView-->
-    <!--                    android:id="@+id/history_icon"-->
-    <!--                    android:layout_width="20dp"-->
-    <!--                    android:layout_height="wrap_content"-->
-    <!--                    android:adjustViewBounds="true"-->
-    <!--                    android:animateLayoutChanges="true"-->
-    <!--                    android:src="@drawable/history_icon" />-->
-
-    <!--                <TextView-->
-    <!--                    android:id="@+id/history_text"-->
-    <!--                    android:layout_width="wrap_content"-->
-    <!--                    android:layout_height="wrap_content"-->
-    <!--                    android:layout_marginStart="10dp"-->
-    <!--                    android:animateLayoutChanges="true"-->
-    <!--                    android:text="История"-->
-    <!--                    android:textColor="@color/history"-->
-    <!--                    android:textSize="16sp"-->
-    <!--                    android:textStyle="bold" />-->
-
-    <!--            </LinearLayout>-->
-
-    <!--            <LinearLayout-->
-    <!--                android:id="@+id/statistic_layout"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="match_parent"-->
-    <!--                android:layout_weight="1"-->
-    <!--                android:animateLayoutChanges="true"-->
-    <!--                android:background="@drawable/transparent_background"-->
-    <!--                android:gravity="center"-->
-    <!--                android:orientation="horizontal"-->
-    <!--                android:paddingHorizontal="5dp">-->
-
-    <!--                <ImageView-->
-    <!--                    android:id="@+id/statistic_icon"-->
-    <!--                    android:layout_width="20dp"-->
-    <!--                    android:layout_height="wrap_content"-->
-    <!--                    android:adjustViewBounds="true"-->
-    <!--                    android:animateLayoutChanges="true"-->
-    <!--                    android:src="@drawable/statistic_icon" />-->
-
-    <!--                <TextView-->
-    <!--                    android:id="@+id/statistic_text"-->
-    <!--                    android:layout_width="wrap_content"-->
-    <!--                    android:layout_height="wrap_content"-->
-    <!--                    android:layout_marginStart="10dp"-->
-    <!--                    android:animateLayoutChanges="true"-->
-    <!--                    android:text="Статистика"-->
-    <!--                    android:textColor="@color/statistic"-->
-    <!--                    android:textSize="16sp"-->
-    <!--                    android:textStyle="bold"-->
-    <!--                    android:visibility="gone" />-->
-
-    <!--            </LinearLayout>-->
-
-    <!--            <LinearLayout-->
-    <!--                android:id="@+id/category_layout"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="match_parent"-->
-    <!--                android:layout_weight="1"-->
-    <!--                android:animateLayoutChanges="true"-->
-    <!--                android:background="@drawable/transparent_background"-->
-    <!--                android:gravity="center"-->
-    <!--                android:orientation="horizontal"-->
-    <!--                android:paddingHorizontal="5dp">-->
-
-    <!--                <ImageView-->
-    <!--                    android:id="@+id/category_icon"-->
-    <!--                    android:layout_width="20dp"-->
-    <!--                    android:layout_height="wrap_content"-->
-    <!--                    android:adjustViewBounds="true"-->
-    <!--                    android:animateLayoutChanges="true"-->
-    <!--                    android:src="@drawable/categories_icon" />-->
-
-    <!--                <TextView-->
-    <!--                    android:id="@+id/category_text"-->
-    <!--                    android:layout_width="wrap_content"-->
-    <!--                    android:layout_height="wrap_content"-->
-    <!--                    android:layout_marginStart="10dp"-->
-    <!--                    android:animateLayoutChanges="true"-->
-    <!--                    android:text="Категории"-->
-    <!--                    android:textColor="@color/categories"-->
-    <!--                    android:textSize="16sp"-->
-    <!--                    android:textStyle="bold"-->
-    <!--                    android:visibility="gone" />-->
-
-    <!--            </LinearLayout>-->
-
-    <!--        </LinearLayout>-->
-
-
-    <!--        <FrameLayout-->
-    <!--            android:layout_width="0dp"-->
-    <!--            android:layout_height="match_parent"-->
-    <!--            android:layout_weight="0.7"-->
-    <!--            android:padding="2dp">-->
-
-    <!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-    <!--                android:id="@+id/add_button"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_gravity="center"-->
-    <!--                android:src="@android:drawable/ic_input_add"-->
-    <!--                app:backgroundTint="@color/history"/>-->
-
-    <!--        </FrameLayout>-->
-
-
-    <!--    </LinearLayout>-->
 
 

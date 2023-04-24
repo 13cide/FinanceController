@@ -12,6 +12,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.financecontroller.DataClasses.Transaction;
+import com.google.android.material.color.MaterialColors;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -40,13 +41,13 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(transaction.getDate());
 
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yy hh:mm");
 
         holder.date.setText(formatter.format(calendar.getTime()));
         holder.value.setText(String.valueOf(transaction.getValue()));
         holder.categoryName.setText(transaction.getCategory().getName());
         holder.icon.setImageResource(transaction.getCategory().getIconID());
-        holder.icon.setBackgroundResource(transaction.getCategory().getColorID());
+        //holder.icon.setBackgroundResource(transaction.getCategory().getColorID());
         holder.currency.setText(transaction.getCurrency_symbol());
         int incomeColor = -2818048;
         int spendColor = -10167017;

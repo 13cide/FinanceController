@@ -3,6 +3,7 @@ package com.example.financecontroller.Fragments;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -67,11 +68,12 @@ public class TransactionsFragment extends Fragment {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-                if(Objects.requireNonNull(binding.transactions.getAdapter()).getItemCount() > 0)
+                if(Objects.requireNonNull(binding.transactions.getAdapter()).getItemCount() > 0) {
                     binding.transactions.smoothScrollToPosition(0);
+                    //getActivity().findViewById(R.id.bottomAppBar);
+                }
             }
         });
-
         return binding.getRoot();
     }
 
@@ -82,10 +84,12 @@ public class TransactionsFragment extends Fragment {
         incomeList = MainActivity.db.wallet.getAccounts()[0].getIncomes();
 
         list.clear();
-        list.addAll(spendList);
+
+        list.addAll(binding.tabs.getSelectedTabPosition() == 1 ? incomeList : spendList);
+
         binding.transactions.getAdapter().notifyDataSetChanged();
 
-        binding.tabs.selectTab(binding.tabs.getTabAt(0));
+
 
         binding.sum.setText(MainActivity.db.wallet.getSum() + "" + MainActivity.db.account.getCurrency().getSymbol());
     }
