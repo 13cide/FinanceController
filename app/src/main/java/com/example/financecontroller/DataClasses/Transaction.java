@@ -1,36 +1,30 @@
 package com.example.financecontroller.DataClasses;
 
-public class Transaction {
-    private int transactionID;
-    private Category category;
-    private int value;
-    private int userID;
-    private String description;
-    private final String currency_symbol;
-    private final long date = System.currentTimeMillis();
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
-    public Transaction(int transactionID, Category category, int value, int userID, String description, String currency_symbol) {
-        this.transactionID = transactionID;
+@Entity
+public class Transaction {
+    @PrimaryKey(autoGenerate = true)
+    public int id;
+
+    @NonNull
+    public Category category;
+    public int value;
+    public int userID;
+    public String description;
+    @NonNull
+    public final String currency_symbol;
+
+    public final long date = System.currentTimeMillis();
+
+    public Transaction(int id, @NonNull Category category, int value, int userID, String description, @NonNull String currency_symbol) {
+        this.id = id;
         this.category = category;
         this.value = value;
         this.userID = userID;
         this.description = description;
         this.currency_symbol = currency_symbol;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public int getValue() {
-        return value;
-    }
-
-    public long getDate() {
-        return date;
-    }
-
-    public String getCurrency_symbol() {
-        return currency_symbol;
     }
 }

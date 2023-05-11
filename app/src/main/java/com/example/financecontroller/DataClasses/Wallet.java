@@ -1,36 +1,24 @@
 package com.example.financecontroller.DataClasses;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+
+@Entity
 public class Wallet {
 
-    private int[] userID;
-    private int sum;
-    private Account[] accounts;
+    @NonNull
+    public int[] userID;
+    @NonNull
+    public Currency mainCurrency;
+    public int sum;
+    @NonNull
+    public Account[] accounts;
 
-    public Wallet(int[] userID, int sum, Account[] accounts) {
+
+    public Wallet(@NonNull int[] userID, @NonNull Currency mainCurrency, int sum, @NonNull Account[] accounts) {
         this.userID = userID;
+        this.mainCurrency = mainCurrency;
         this.sum = sum;
-        this.accounts = accounts;
-    }
-
-
-    public int[] getUserID() {
-        return userID;
-    }
-    public void setUserID(int[] userID) {
-        this.userID = userID;
-    }
-
-    public int getSum() {
-        return sum;
-    }
-    public void setSum(int sum) {
-        this.sum = sum;
-    }
-
-    public Account[] getAccounts() {
-        return accounts;
-    }
-    public void setAccounts(Account[] accounts) {
         this.accounts = accounts;
     }
 }

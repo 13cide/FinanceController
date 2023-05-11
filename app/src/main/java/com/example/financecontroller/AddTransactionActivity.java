@@ -2,15 +2,12 @@ package com.example.financecontroller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.os.Binder;
 import android.os.Bundle;
-import android.renderscript.ScriptGroup;
 import android.widget.Toast;
 
-import com.example.financecontroller.DataClasses.Localdb;
 import com.example.financecontroller.DataClasses.Transaction;
-import com.example.financecontroller.Fragments.TransactionsFragment;
+import com.example.financecontroller.DataClasses.Wallet;
+import com.example.financecontroller.Room.Database;
 import com.example.financecontroller.databinding.ActivityAddTransactionBinding;
 import com.google.android.material.color.DynamicColors;
 
@@ -33,15 +30,17 @@ public class AddTransactionActivity extends AppCompatActivity {
             if (!binding.amount.getText().toString().isEmpty()) {
                 int amount = Integer.parseInt(binding.amount.getText().toString());
 
-                Localdb db = MainActivity.db;
+                Wallet wallet = App.getDatabase().walletDAO().getAll().get(0);
 
-                if (binding.switcher.isChecked())
-                    db.account.getSpends().add(new Transaction(db.nextTransactionID(),
-                            db.music, amount, 1, "", "₽"));
-                else db.account.getIncomes().add(new Transaction(db.nextTransactionID(),
-                        db.salary, amount, 1, "", "₽"));
-                db.wallet.setSum(db.wallet.getSum() + amount * (binding.switcher.isChecked() ? -1 : 1));
-                MainActivity.db = db;
+//                if (binding.switcher.isChecked())
+//                    database.account.getSpends().add(new Transaction(database.nextTransactionID(),
+//                            database.music, amount, 1, "", "₽"));
+//
+//                else database.account.getIncomes().add(new Transaction(database.nextTransactionID(),
+//                        database.salary, amount, 1, "", "₽"));
+//
+//                database.walletDAO().wallet.setSum(database.wallet.getSum() + amount * (binding.switcher.isChecked() ? -1 : 1));
+//                MainActivity.db = db;
                 finish();
             }
             else {

@@ -1,10 +1,6 @@
 package com.example.financecontroller.DataClasses;
 
-import android.graphics.Color;
-
 import com.example.financecontroller.R;
-
-import org.w3c.dom.Attr;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,10 +25,10 @@ public class Localdb {
 
 
     public Account account = new Account(1, ruble, 0,
-            new ArrayList<Transaction>(),
-            new ArrayList<Transaction>());
+            new ArrayList<Transaction>(Arrays.asList(transaction2, transaction2, transaction2, transaction2, transaction2, transaction2, transaction2, transaction2)),
+            new ArrayList<Transaction>(Arrays.asList(transaction, transaction, transaction, transaction, transaction, transaction, transaction, transaction, transaction, transaction, transaction, transaction, transaction, transaction, transaction, transaction, transaction)));
 
-    public Wallet wallet = new Wallet(new int[]{1}, 0, new Account[]{account});
+    public Wallet wallet = new Wallet(new int[]{1}, ruble, 0, new Account[]{account});
 
     public int nextTransactionID() {
         return current_id++;

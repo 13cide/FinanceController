@@ -7,14 +7,13 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.financecontroller.DataClasses.Localdb;
 import com.example.financecontroller.Fragments.CategoryFragment;
 import com.example.financecontroller.Fragments.StatisticFragment;
 import com.example.financecontroller.Fragments.TransactionsFragment;
+import com.example.financecontroller.Room.Database;
 import com.example.financecontroller.databinding.ActivityMainBinding;
 import com.google.android.material.color.DynamicColors;
 
@@ -25,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
     final private FragmentManager fragmentManager = getSupportFragmentManager();
 
-    public static Localdb db = new Localdb();
     private int chosenFragment = 1;
 
     @Override
@@ -45,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         swapFragment(new TransactionsFragment());
 
         binding.bottomAppBar.setNavigationOnClickListener(view -> {
-
         });
 
         binding.bottomAppBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {

@@ -1,24 +1,18 @@
 package com.example.financecontroller.Fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.example.financecontroller.AddTransactionActivity;
-import com.example.financecontroller.DataClasses.Localdb;
 import com.example.financecontroller.DataClasses.Transaction;
 import com.example.financecontroller.MainActivity;
 import com.example.financecontroller.R;
 import com.example.financecontroller.TransactionAdapter;
-import com.example.financecontroller.databinding.ActivityMainBinding;
 import com.example.financecontroller.databinding.FragmentTransactionsBinding;
 import com.google.android.material.tabs.TabLayout;
 
@@ -55,10 +49,9 @@ public class TransactionsFragment extends Fragment {
         binding.tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-            list.clear();
-            list.addAll(tab.getPosition() == 0 ? spendList : incomeList);
-            binding.transactions.getAdapter().notifyDataSetChanged();
-
+                list.clear();
+                list.addAll(tab.getPosition() == 0 ? spendList : incomeList);
+                binding.transactions.getAdapter().notifyDataSetChanged();
             }
 
             @Override
@@ -70,7 +63,7 @@ public class TransactionsFragment extends Fragment {
             public void onTabReselected(TabLayout.Tab tab) {
                 if(Objects.requireNonNull(binding.transactions.getAdapter()).getItemCount() > 0) {
                     binding.transactions.smoothScrollToPosition(0);
-                    //getActivity().findViewById(R.id.bottomAppBar);
+                    getActivity().findViewById(R.id.bottomAppBar).animate().translationY(0).setDuration(200);
                 }
             }
         });
@@ -88,8 +81,6 @@ public class TransactionsFragment extends Fragment {
         list.addAll(binding.tabs.getSelectedTabPosition() == 1 ? incomeList : spendList);
 
         binding.transactions.getAdapter().notifyDataSetChanged();
-
-
 
         binding.sum.setText(MainActivity.db.wallet.getSum() + "" + MainActivity.db.account.getCurrency().getSymbol());
     }

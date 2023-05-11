@@ -1,52 +1,29 @@
 package com.example.financecontroller.DataClasses;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.util.ArrayList;
 
+@Entity
 public class Account {
-    private int accountID;
-    private Currency currency;
-    private int sum;
-    private ArrayList<Transaction> spends;
-    private ArrayList<Transaction> incomes;
+    @PrimaryKey(autoGenerate = true)
+    public int accountID;
+    @NonNull
+    public Currency currency;
+    public int sum;
+    @NonNull
+    public ArrayList<Transaction> spends;
+    @NonNull
+    public ArrayList<Transaction> incomes;
 
 
-    public Account(int accountID, Currency currency, int sum, ArrayList<Transaction> spends, ArrayList<Transaction> incomes) {
+    public Account(int accountID, @NonNull Currency currency, int sum, @NonNull ArrayList<Transaction> spends, @NonNull ArrayList<Transaction> incomes) {
         this.accountID = accountID;
         this.currency = currency;
         this.sum = sum;
         this.spends = spends;
-        this.incomes = incomes;
-    }
-
-    public int getAccountID() {
-        return accountID;
-    }
-
-    public void setAccountID(int accountID) {
-        this.accountID = accountID;
-    }
-
-    public Currency getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(Currency currency) {
-        this.currency = currency;
-    }
-
-    public ArrayList<Transaction> getSpends() {
-        return spends;
-    }
-
-    public void setSpends(ArrayList<Transaction> spends) {
-        this.spends = spends;
-    }
-
-    public ArrayList<Transaction> getIncomes() {
-        return incomes;
-    }
-
-    public void setIncomes(ArrayList<Transaction> incomes) {
         this.incomes = incomes;
     }
 }
