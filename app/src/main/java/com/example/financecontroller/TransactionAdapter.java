@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.financecontroller.DataClasses.Category;
 import com.example.financecontroller.DataClasses.Transaction;
 
 import java.text.SimpleDateFormat;
@@ -33,6 +34,7 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         final Transaction transaction = list.get(list.size()-position-1);
+        final Category category = App.getDatabase().transactionDAO().getCategoryByID(transaction.categoryID);
 
 
         Calendar calendar = Calendar.getInstance();
@@ -42,7 +44,7 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
 
         holder.date.setText(formatter.format(calendar.getTime()));
         holder.value.setText(String.valueOf(transaction.value));
-        holder.categoryName.setText(transaction.category.name);
+        holder.categoryName.setText(category.name);
         holder.icon.setImageResource(transaction.category.iconID);
         //holder.icon.setBackgroundResource(transaction.getCategory().getColorID());
         holder.currency.setText(transaction.currency_symbol);

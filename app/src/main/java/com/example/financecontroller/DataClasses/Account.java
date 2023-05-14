@@ -10,20 +10,15 @@ import java.util.ArrayList;
 public class Account {
     @PrimaryKey(autoGenerate = true)
     public int accountID;
+    public int walletID;
     @NonNull
-    public Currency currency;
+    public String currency;
     public int sum;
-    @NonNull
-    public ArrayList<Transaction> spends;
-    @NonNull
-    public ArrayList<Transaction> incomes;
 
-
-    public Account(int accountID, @NonNull Currency currency, int sum, @NonNull ArrayList<Transaction> spends, @NonNull ArrayList<Transaction> incomes) {
+    public Account(int accountID, int walletID, @NonNull String currency, int sum) {
         this.accountID = accountID;
+        this.walletID = walletID;
         this.currency = currency;
         this.sum = sum;
-        this.spends = spends;
-        this.incomes = incomes;
     }
 }

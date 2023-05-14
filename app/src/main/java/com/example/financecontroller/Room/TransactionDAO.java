@@ -4,7 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-
+import com.example.financecontroller.DataClasses.Category;
 import com.example.financecontroller.DataClasses.Transaction;
 
 import java.util.List;
@@ -17,6 +17,12 @@ public interface TransactionDAO {
     @Query("SELECT * FROM 'Transaction'")
     List<Transaction> getAll();
 
-    @Query("SELECT * FROM `Transaction` WHERE id = :id")
-    Transaction getId(int id);
+    @Query("SELECT * FROM 'Transaction'") //TODO
+    List<Transaction> getSpends();
+
+    @Query("SELECT * FROM 'Transaction'") //TODO
+    List<Transaction> getIncomes();
+
+    @Query("SELECT * FROM Category WHERE categoryID = :id")
+    Category getCategoryByID(int id);
 }

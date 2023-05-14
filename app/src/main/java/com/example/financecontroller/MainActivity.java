@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.financecontroller.DataClasses.Transaction;
 import com.example.financecontroller.Fragments.CategoryFragment;
 import com.example.financecontroller.Fragments.StatisticFragment;
 import com.example.financecontroller.Fragments.TransactionsFragment;
@@ -17,10 +18,12 @@ import com.example.financecontroller.Room.Database;
 import com.example.financecontroller.databinding.ActivityMainBinding;
 import com.google.android.material.color.DynamicColors;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
-
 
     final private FragmentManager fragmentManager = getSupportFragmentManager();
 

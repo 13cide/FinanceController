@@ -7,16 +7,16 @@ import androidx.room.PrimaryKey;
 @Entity
 public class Currency {
     @PrimaryKey
-    public String name;
-    public double value;
     @NonNull
-    public final String symbol;
+    public String name;
+    public int value;
+    @NonNull
+    public String symbol;
 
-    public Currency(@NonNull String name, double value, @NonNull String symbol) {
+    public Currency(String name, int value, @NonNull String symbol) {
         this.name = name;
         this.value = value;
         this.symbol = symbol;
     }
-
 }
 

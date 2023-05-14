@@ -2,23 +2,19 @@ package com.example.financecontroller.DataClasses;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 @Entity
 public class Wallet {
 
-    @NonNull
-    public int[] userID;
-    @NonNull
-    public Currency mainCurrency;
+    @PrimaryKey(autoGenerate = true)
+    public int id;
+    public int currency;
     public int sum;
-    @NonNull
-    public Account[] accounts;
 
-
-    public Wallet(@NonNull int[] userID, @NonNull Currency mainCurrency, int sum, @NonNull Account[] accounts) {
-        this.userID = userID;
-        this.mainCurrency = mainCurrency;
+    public Wallet(int id, int currency, int sum) {
+        this.id = id;
+        this.currency = currency;
         this.sum = sum;
-        this.accounts = accounts;
     }
 }

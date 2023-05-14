@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.financecontroller.App;
 import com.example.financecontroller.DataClasses.Transaction;
 import com.example.financecontroller.MainActivity;
 import com.example.financecontroller.R;
@@ -39,9 +40,10 @@ public class TransactionsFragment extends Fragment {
 
         binding.transactions.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
-
-        spendList = MainActivity.db.wallet.getAccounts()[0].getSpends();
-        incomeList= MainActivity.db.wallet.getAccounts()[0].getIncomes();
+        List<Transaction> transactions = new ArrayList<>();
+        new Thread(() -> {
+            transactions.addAll(App.getDatabase().transactionDAO().getAll());
+        }).start();
 
         binding.transactions.setAdapter(new TransactionAdapter(list));
 
@@ -73,15 +75,15 @@ public class TransactionsFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        spendList = MainActivity.db.wallet.getAccounts()[0].getSpends();
-        incomeList = MainActivity.db.wallet.getAccounts()[0].getIncomes();
-
-        list.clear();
-
-        list.addAll(binding.tabs.getSelectedTabPosition() == 1 ? incomeList : spendList);
-
-        binding.transactions.getAdapter().notifyDataSetChanged();
-
-        binding.sum.setText(MainActivity.db.wallet.getSum() + "" + MainActivity.db.account.getCurrency().getSymbol());
+//        spendList = MainActivity.db.wallet.getAccounts()[0].getSpends();
+//        incomeList = MainActivity.db.wallet.getAccounts()[0].getIncomes();
+//
+//        list.clear();
+//
+//        list.addAll(binding.tabs.getSelectedTabPosition() == 1 ? incomeList : spendList);
+//
+//        binding.transactions.getAdapter().notifyDataSetChanged();
+//
+//        binding.sum.setText(MainActivity.db.wallet.getSum() + "" + MainActivity.db.account.getCurrency().getSymbol());
     }
 }
