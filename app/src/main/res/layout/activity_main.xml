@@ -18,7 +18,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:animateLayoutChanges="true"
-        app:hideOnScroll="true"
         app:menu="@menu/bottom_app_bar"
         app:navigationIcon="@drawable/baseline_menu_icon" />
 

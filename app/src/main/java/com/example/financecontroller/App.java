@@ -7,12 +7,7 @@ import androidx.room.Room;
 import com.example.financecontroller.Room.Database;
 
 public class App extends Application {
-    private static App instance;
     private static Database database;
-
-    public static App getInstance() {
-        return instance;
-    }
 
     public static Database getDatabase() {
         return database;
@@ -20,8 +15,7 @@ public class App extends Application {
 
     @Override
     public void onCreate() {
-        instance = this;
-        database = Room.databaseBuilder(this, Database.class, "database").build();
+        database = Room.databaseBuilder(this, Database.class, "database").fallbackToDestructiveMigration().build();
         super.onCreate();
     }
 }

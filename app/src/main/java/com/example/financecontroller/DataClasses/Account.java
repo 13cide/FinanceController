@@ -9,14 +9,14 @@ import java.util.ArrayList;
 @Entity
 public class Account {
     @PrimaryKey(autoGenerate = true)
-    public int accountID;
+    public int id;
     public int walletID;
     @NonNull
     public String currency;
     public int sum;
 
-    public Account(int accountID, int walletID, @NonNull String currency, int sum) {
-        this.accountID = accountID;
+    public Account(int id, int walletID, @NonNull String currency, int sum) {
+        this.id = id;
         this.walletID = walletID;
         this.currency = currency;
         this.sum = sum;

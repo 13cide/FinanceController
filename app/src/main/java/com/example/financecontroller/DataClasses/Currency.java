@@ -13,7 +13,7 @@ public class Currency {
     @NonNull
     public String symbol;
 
-    public Currency(String name, int value, @NonNull String symbol) {
+    public Currency(@NonNull String name, int value, @NonNull String symbol) {
         this.name = name;
         this.value = value;
         this.symbol = symbol;

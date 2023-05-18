@@ -7,17 +7,14 @@ import androidx.room.PrimaryKey;
 @Entity
 public class Category {
     @PrimaryKey(autoGenerate = true)
-    public int categoryID;
+    public int id;
     @NonNull
     public String name;
-    public int colorID;
     public int iconID;
     public boolean isIncome;
 
-    public Category(int categoryID, @NonNull String name, int colorID, int iconID, boolean isIncome) {
-        this.categoryID = categoryID;
+    public Category(@NonNull String name, int iconID, boolean isIncome) {
         this.name = name;
-        this.colorID = colorID;
         this.iconID = iconID;
         this.isIncome = isIncome;
     }
