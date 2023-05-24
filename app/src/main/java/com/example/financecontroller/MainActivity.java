@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                             else {
                                 Category category = (Category) data.getSerializableExtra("category");
                                 (data.getBooleanExtra("isIncome", true) ? categoryIncome : categorySpend).add(category);
+                                categoryList.add(category);
                                 new Thread(() -> {
                                     dao.save(category);
                                 }).start();

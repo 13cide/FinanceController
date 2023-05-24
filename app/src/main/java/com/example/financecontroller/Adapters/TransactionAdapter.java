@@ -9,22 +9,29 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.financecontroller.App;
 import com.example.financecontroller.DataClasses.Category;
 import com.example.financecontroller.DataClasses.Transaction;
 import com.example.financecontroller.R;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.MyViewHolder> {
 
     private final List<Transaction> list;
-    private final List<Category> categoryList;
+    private final List<Category> categoryList = new ArrayList<>();
 
     public TransactionAdapter(List<Transaction> list, List<Category> categoryList) {
         this.list = list;
-        this.categoryList = categoryList;
+
+        new Thread(() -> {
+            this.categoryList.addAll(App.getDatabase().DAO().getIncomeCategories());
+            this.categoryList.addAll(App.getDatabase().DAO().getSpendCategories());
+        }).start();
+
     }
 
     @NonNull
