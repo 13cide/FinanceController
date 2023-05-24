@@ -1,10 +1,10 @@
 package com.example.financecontroller.Room;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.example.financecontroller.DataClasses.Account;
 import com.example.financecontroller.DataClasses.Category;
 import com.example.financecontroller.DataClasses.Currency;
 import com.example.financecontroller.DataClasses.Transaction;
@@ -18,8 +18,6 @@ public interface DatabaseDAO {
     void save(Transaction transaction);
     @Insert
     void save(Category category);
-    @Insert
-    void save(Account account);
     @Insert
     void save(Currency currency);
 
@@ -42,6 +40,10 @@ public interface DatabaseDAO {
     @Query("SELECT * FROM Currency")
     List<Currency> getCurrencies();
 
-    @Query("SELECT * FROM Account")
-    List<Account> getAccounts();
+    @Query("DELETE FROM `Transaction`")
+    void del1();
+
+    @Query("DELETE FROM Category")
+    void del2();
+
 }

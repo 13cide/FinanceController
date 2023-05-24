@@ -3,6 +3,7 @@ package com.example.financecontroller.Fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.financecontroller.Adapters.CategoryAdapter;
+import com.example.financecontroller.App;
 import com.example.financecontroller.DataClasses.Category;
 import com.example.financecontroller.R;
 import com.example.financecontroller.databinding.FragmentCategoryBinding;
@@ -42,8 +44,6 @@ public class CategoryFragment extends Fragment {
 
         binding = FragmentCategoryBinding.inflate(getLayoutInflater());
 
-        binding.categories.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-
         list.addAll(spendList);
         binding.categories.setAdapter(new CategoryAdapter(list));
 
@@ -69,8 +69,21 @@ public class CategoryFragment extends Fragment {
             }
         });
 
+        binding.categories.setLayoutManager(new GridLayoutManager(getContext(), 2));
+
         return binding.getRoot();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        list.clear();
+
+        list.addAll(binding.tabs.getSelectedTabPosition() == 1 ? incomeList : spendList);
+
+        binding.categories.getAdapter().notifyDataSetChanged();
+
+    }
 
 }

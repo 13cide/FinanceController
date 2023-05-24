@@ -11,22 +11,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:animateLayoutChanges="true"
-        app:menu="@menu/bottom_app_bar"
-        app:navigationIcon="@drawable/baseline_menu_icon" />
+        app:hideOnScroll="true"
+        app:menu="@menu/bottom_app_bar" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_anchor="@id/bottomAppBar"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:srcCompat="@drawable/history_icon" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

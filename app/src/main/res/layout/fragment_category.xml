@@ -22,19 +22,13 @@
 
     </com.google.android.material.tabs.TabLayout>
 
-    <FrameLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/categories"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/tabs"
         android:layout_margin="15dp"
-        android:padding="5dp">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/categories"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </FrameLayout>
+        android:padding="5dp"
+        android:layout_below="@id/tabs" />
 
 
 </RelativeLayout>

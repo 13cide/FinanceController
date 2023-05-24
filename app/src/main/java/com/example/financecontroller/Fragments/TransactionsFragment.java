@@ -85,6 +85,16 @@ public class TransactionsFragment extends Fragment {
 
         binding.transactions.getAdapter().notifyDataSetChanged();
 
-        //binding.sum.setText(MainActivity.db.wallet.getSum() + "" + MainActivity.db.account.getCurrency().getSymbol());
+        int sum = 0;
+        for (Transaction i : incomeList) {
+            sum += i.value;
+        }
+        for (Transaction i : spendList) {
+            sum -= i.value;
+        }
+        if (sum >= 0)
+            binding.sum.setText(sum + "₽");
+        else
+            binding.sum.setText("-" + Math.abs(sum) + "₽");
     }
 }

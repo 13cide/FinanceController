@@ -9,23 +9,17 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
-import com.example.financecontroller.DataClasses.Account;
 import com.example.financecontroller.DataClasses.Category;
 import com.example.financecontroller.DataClasses.Currency;
 import com.example.financecontroller.DataClasses.Transaction;
 import com.example.financecontroller.Fragments.CategoryFragment;
 import com.example.financecontroller.Fragments.StatisticFragment;
 import com.example.financecontroller.Fragments.TransactionsFragment;
-import com.example.financecontroller.Room.Database;
 import com.example.financecontroller.Room.DatabaseDAO;
 import com.example.financecontroller.databinding.ActivityMainBinding;
 import com.google.android.material.color.DynamicColors;
@@ -50,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
     List<Category> categorySpend = new ArrayList<>();
     List<Category> categoryList = new ArrayList<>();
     List<Currency> currencyList = new ArrayList<>();
-    List<Account> accountList = new ArrayList<>();
 
     ActivityResultLauncher<Intent> activityResultLauncher =
             registerForActivityResult(
@@ -60,14 +53,20 @@ public class MainActivity extends AppCompatActivity {
                     public void onActivityResult(ActivityResult result) {
                         Intent data = result.getData();
                         if (result.getResultCode() == RESULT_OK) {
-                            Transaction transaction = (Transaction) data.getSerializableExtra("transaction");
-
-                            (data.getBooleanExtra("isIncome", true) ? incomeList : spendList).add(transaction);
-
-                            new Thread(() -> {
-                                dao.save(transaction);
-                            }).start();
-
+                            if (chosenFragment == 1) {
+                                Transaction transaction = (Transaction) data.getSerializableExtra("transaction");
+                                (data.getBooleanExtra("isIncome", true) ? incomeList : spendList).add(transaction);
+                                new Thread(() -> {
+                                    dao.save(transaction);
+                                }).start();
+                            }
+                            else {
+                                Category category = (Category) data.getSerializableExtra("category");
+                                (data.getBooleanExtra("isIncome", true) ? categoryIncome : categorySpend).add(category);
+                                new Thread(() -> {
+                                    dao.save(category);
+                                }).start();
+                            }
                         }
                     }
                 }
@@ -85,11 +84,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.addButton.setOnClickListener(view -> {
-            Intent intent = new Intent(this, AddTransactionActivity.class);
+            Intent intent = new Intent(this, chosenFragment == 1 ? AddTransactionActivity.class : AddCategoryActivity.class);
             activityResultLauncher.launch(intent);
         });
 
         new Thread(() -> {
+            if (dao.getIncomeCategories().isEmpty()) {
+                dao.save(new Category("зарплата", R.drawable.icon_salary, true));
+                dao.save(new Category("проценты", R.drawable.icon_percents, true));
+                dao.save(new Category("подарки", R.drawable.icon_gift, true));
+                dao.save(new Category("другое", R.drawable.icon_else, true));
+                dao.save(new Category("досуг", R.drawable.icon_chilling, false));
+                dao.save(new Category("продукты", R.drawable.icon_else, false));
+                dao.save(new Category("семья", R.drawable.icon_family, false));
+                dao.save(new Category("учёба", R.drawable.icon_education, false));
+                dao.save(new Category("подарки", R.drawable.icon_gift, false));
+                dao.save(new Category("дом", R.drawable.icon_home, false));
+                dao.save(new Category("перелёты", R.drawable.icon_6, false));
+                dao.save(new Category("техниа", R.drawable.icon_9, false));
+                dao.save(new Category("другое", R.drawable.icon_else, false));
+            }
             incomeList.addAll(dao.getIncomes());
             spendList.addAll(dao.getSpends());
             categoryIncome.addAll(dao.getIncomeCategories());
@@ -97,16 +111,12 @@ public class MainActivity extends AppCompatActivity {
             categoryList.addAll(categoryIncome);
             categoryList.addAll(categorySpend);
             currencyList.addAll(dao.getCurrencies());
-            accountList.addAll(dao.getAccounts());
         }).start();
 
 
 
 
         swapFragment(new TransactionsFragment(incomeList, spendList, categoryList));
-
-        binding.bottomAppBar.setNavigationOnClickListener(view -> {
-        });
 
 
 
@@ -120,30 +130,19 @@ public class MainActivity extends AppCompatActivity {
                             swapFragment(new TransactionsFragment(incomeList, spendList, categoryList));
                             chosenFragment = 1;
                             item.setIcon(R.drawable.history_icon_selected);
-                            binding.bottomAppBar.getMenu().getItem(1).setIcon(R.drawable.statistic_icon);
-                            binding.bottomAppBar.getMenu().getItem(2).setIcon(R.drawable.categories_icon);
-                        }
-                        return true;
-
-                    case R.id.statistic:
-                        if (chosenFragment != 2) {
-                            swapFragment(new StatisticFragment());
-                            chosenFragment = 2;
-                            binding.bottomAppBar.getMenu().getItem(0).setIcon(R.drawable.history_icon);
-                            item.setIcon(R.drawable.statistic_icon_selected);
-                            binding.bottomAppBar.getMenu().getItem(2).setIcon(R.drawable.categories_icon);
+                            binding.bottomAppBar.getMenu().getItem(1).setIcon(R.drawable.categories_icon);
+                            binding.addButton.setImageResource(R.drawable.history_icon);
                         }
                         return true;
 
                     case R.id.category:
                         if (chosenFragment != 3) {
-
-
                             swapFragment(new CategoryFragment(categoryIncome, categorySpend));
                             chosenFragment = 3;
                             binding.bottomAppBar.getMenu().getItem(0).setIcon(R.drawable.history_icon);
-                            binding.bottomAppBar.getMenu().getItem(1).setIcon(R.drawable.statistic_icon);
                             item.setIcon(R.drawable.categories_icon_selected);
+                            binding.addButton.setImageResource(R.drawable.categories_icon);
+
                         }
                         return true;
                 }

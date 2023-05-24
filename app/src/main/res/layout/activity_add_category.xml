@@ -7,47 +7,31 @@
     tools:context=".AddTransactionActivity">
 
 
-    <LinearLayout
-        android:id="@+id/input_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="250dp"
+        android:layout_height="85dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="90dp"
-        android:orientation="horizontal">
-
-
-        <EditText
-            android:id="@+id/amount"
-            android:layout_width="250dp"
-            android:layout_height="85dp"
-            android:inputType="numberSigned"
-            android:textAlignment="center"
-            android:textSize="40sp"
-            tools:text="3000" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="₽"
-            android:textSize="60sp" />
-
-    </LinearLayout>
+        android:textAlignment="center"
+        android:textSize="40sp"
+        tools:text="зарплата" />
 
     <Switch
         android:id="@+id/switcher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/input_value"
+        android:layout_below="@+id/name"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
         android:scaleX="2"
         android:scaleY="2"
-        android:text="доход"
+        android:text="Доход"
         android:textSize="20sp"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/categorylist"
+        android:id="@+id/iconsList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/switcher"
@@ -59,7 +43,7 @@
         android:id="@+id/add_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/categorylist"
+        android:layout_below="@+id/iconsList"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
         android:text="добавить"
